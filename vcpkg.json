@@ -1,8 +1,9 @@
 {
-	"name": "fmt-example",
-	"version": "0.0.1",
+	"name": "vcpkg-example",
+	"version-string": "0.1.0",
 	"dependencies": [
-		"fmt",
-		"cppitertools"
+	  "cxxopts",
+	  "fmt",
+	  "range-v3"
 	]
-}
+  }
