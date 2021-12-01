@@ -1,31 +1,20 @@
-#include <cxxopts.hpp>
 #include <fmt/format.h>
-#include <range/v3/view.hpp>
+#include <cppitertools/itertools.hpp>
 
-namespace view = ranges::views;
+int fib(int n) {
+	int a = 0, b = 1;
 
-int fib(int x) {
-  int a = 0, b = 1;
+	for ([[maybe_unused]] int i : iter::range(n)) {
+		auto tmp = b;
+		b = a + b;
+		a = tmp;
+	}
 
-  for (int it : view::repeat(0) | view::take(x)) {
-    (void)it;
-    int tmp = a;
-    a += b;
-    b = tmp;
-  }
-
-  return a;
+	return a;
 }
 
-int main(int argc, char** argv) {
-  cxxopts::Options options("vcpkg-example", "Print the fibonacci sequence up to a value 'n'");
-    options.add_options()
-      ("n,value", "The value to print to", cxxopts::value<int>()->default_value("10"));
-
-  auto result = options.parse(argc, argv);
-  auto n = result["value"].as<int>();
-
-  for (int x : view::iota(1) | view::take(n)) {
-    fmt::print("fib({}) = {}\n", x, fib(x));
-  }
+int main() {
+	for (int i : iter::range(15)) {
+		fmt::print("fib({}) = {}\n", i, fib(i));
+	}
 }

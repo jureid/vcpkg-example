@@ -2,8 +2,8 @@
 	"name": "vcpkg-example",
 	"version-string": "0.1.0",
 	"dependencies": [
-	  "cxxopts",
+	  "cppitertools",
 	  "fmt",
-	  "range-v3"
+	  "gtest"
 	]
   }
