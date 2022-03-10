@@ -16,11 +16,33 @@
           "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
           "CMAKE_TOOLCHAIN_FILE": {
             "type": "FILEPATH",
-            "value": "/Users/julia/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
           }
         },
         "environment": {
           "VCPKG_FEATURE_FLAGS": "manifests,versions,binarycaching,registries"
+        }
+      },
+      {
+        "name": "windows-base",
+        "description": "Sets x86 arch, compilers, build type",
+        "inherits": [
+          "base"
+        ],
+        "architecture": {
+          "value": "x86",
+          "strategy": "external"
+        },
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_CXX_COMPILER": "cl"
+        },
+        "vendor": {
+          "microsoft.com/VisualStudioSettings/CMake/1.0": {
+            "hostOS": [
+              "Windows"
+            ]
+          }
         }
       },
       {
@@ -69,6 +91,20 @@
         "inheritConfigureEnvironment": true
       },
       {
+        "name": "windows-clean-build",
+        "description": "Clean before build (--clean-first)",
+        "configurePreset": "windows-base",
+        "inherits": "core-build",
+        "cleanFirst": true
+      },
+      {
+        "name": "windows-verbose-build",
+        "description": "Passes -v to Ninja",
+        "configurePreset": "windows-base",
+        "inherits": "core-build",
+        "nativeToolOptions": [ "-v" ]
+      },
+      {
         "name": "macos-clean-build",
         "description": "Clean before build (--clean-first)",
         "configurePreset": "macos-base",
@@ -96,6 +132,11 @@
       {
         "name": "macos-core-test",
         "configurePreset": "macos-base",
+        "inherits": "core-test"
+      },
+      {
+        "name": "windows-core-test",
+        "configurePreset": "windows-base",
         "inherits": "core-test"
       }
     ]

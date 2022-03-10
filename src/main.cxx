@@ -4,7 +4,8 @@
 int fib(int n) {
 	int a = 0, b = 1;
 
-	for ([[maybe_unused]] int i : iter::range(n)) {
+	for ([[maybe_unused]] int i : iter::range(n))
+	{
 		auto tmp = b;
 		b = a + b;
 		a = tmp;
@@ -14,7 +15,8 @@ int fib(int n) {
 }
 
 int main() {
-	for (int i : iter::range(15)) {
+	for (int i : iter::range(15))
+	{
 		fmt::print("fib({}) = {}\n", i, fib(i));
 	}
 }
