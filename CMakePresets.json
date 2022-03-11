@@ -40,7 +40,6 @@
         "vendor": {
           "microsoft.com/VisualStudioSettings/CMake/1.0": {
             "enableClangTidyCodeAnalysis": true,
-            "clangTidyChecks": "clang-analyzer-*,cppcoreguidelines-*",
             "hostOS": [
               "Windows"
             ]
