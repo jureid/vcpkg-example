@@ -25,12 +25,12 @@
       },
       {
         "name": "windows-base",
-        "description": "Sets x86 arch, compilers, build type",
+        "description": "Sets x64 arch, compilers, build type",
         "inherits": [
           "base"
         ],
         "architecture": {
-          "value": "x86",
+          "value": "x64",
           "strategy": "external"
         },
         "cacheVariables": {
