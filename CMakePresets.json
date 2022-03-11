@@ -25,12 +25,12 @@
       },
       {
         "name": "windows-base",
-        "description": "Sets x86 arch, compilers, build type",
+        "description": "Sets x64 arch, compilers, build type",
         "inherits": [
           "base"
         ],
         "architecture": {
-          "value": "x86",
+          "value": "x64",
           "strategy": "external"
         },
         "cacheVariables": {
@@ -39,10 +39,22 @@
         },
         "vendor": {
           "microsoft.com/VisualStudioSettings/CMake/1.0": {
+            "enableClangTidyCodeAnalysis": true,
+            "clangTidyChecks": "clang-analyzer-*,cppcoreguidelines-*",
             "hostOS": [
               "Windows"
             ]
           }
+        }
+      },
+      {
+        "name": "windows-clang",
+        "description": "Sets compiler",
+        "inherits": [
+          "windows-base"
+        ],
+        "cacheVariables": {
+          "CMAKE_CXX_COMPILER": "clang-cl"
         }
       },
       {
