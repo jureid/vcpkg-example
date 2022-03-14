@@ -3,7 +3,6 @@
 
 int fib(int n) {
 	int a = 0, b = 1;
-	int x;
 
 	for ([[maybe_unused]] int i : iter::range(n))
 	{
