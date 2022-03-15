@@ -16,7 +16,7 @@
           "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
           "CMAKE_TOOLCHAIN_FILE": {
             "type": "FILEPATH",
-            "value": "/home/jureid/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
           }
         },
         "environment": {
