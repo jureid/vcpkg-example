@@ -46,6 +46,28 @@
         }
       },
       {
+        "name": "windows-base-2",
+        "description": "Sets x64 arch, compilers, build type",
+        "inherits": [
+          "base"
+        ],
+        "architecture": {
+          "value": "x64",
+          "strategy": "external"
+        },
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_CXX_COMPILER": "cl"
+        },
+        "vendor": {
+          "microsoft.com/VisualStudioSettings/CMake/1.0": {
+            "hostOS": [
+              "Windows"
+            ]
+          }
+        }
+      },
+      {
         "name": "macos-base",
         "description": "Sets compilers, build type",
         "inherits": [ "base" ],
@@ -65,7 +87,11 @@
         "inherits": "base",
         "cacheVariables": {
           "CMAKE_BUILD_TYPE": "Debug",
-          "CMAKE_CXX_COMPILER": "g++-7"
+          "CMAKE_CXX_COMPILER": "g++-7",
+          "CMAKE_TOOLCHAIN_FILE": {
+            "type": "FILEPATH",
+            "value": "/home/jureid/vcpkg/scripts/buildsystems/vcpkg.cmake"
+          }
         },
         "vendor": {
           "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -100,7 +126,7 @@
       {
         "name": "windows-verbose-build",
         "description": "Passes -v to Ninja",
-        "configurePreset": "windows-base",
+        "configurePreset": "windows-base-2",
         "inherits": "core-build",
         "nativeToolOptions": [ "-v" ]
       },
